@@ -23,13 +23,18 @@ jobs:
         id: diff
         run: |
           if (git diff --shortstat | grep '[0-9]'); then echo "::set-output name=fixed::yes"; fi
-      - if: steps.diff.outputs.fixed == 'yes'
+      - name: Gitアカウント情報を設定
+        if: steps.diff.outputs.fixed == 'yes'
+        id: setup-git
         run: |
           git remote set-url origin https://github-actions:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
           git config --global user.name $GITHUB_ACTOR
-          git config --global user.email $GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.email $GITHUB_ACTOR@users.noreply.github.com
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 自動修正の差分をプッシュ
+        needs: setup-git
+        run: |
           git add .;
           git commit -m "👕 Fixed auto-fixable ESLint errors by github-actions";
           git push origin HEAD:${GITHUB_REF};
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
