@@ -23,9 +23,6 @@ jobs:
         id: diff
         run: |
           if (git diff --shortstat | grep '[0-9]'); then echo "::set-output name=fixed::yes"; fi
-      - run: echo $LOG
-        env:
-          LOG: ${{ steps.diff.outputs.fixed }}
       - if: steps.diff.outputs.fixed == 'yes'
         run: |
           git remote set-url origin https://github-actions:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY
