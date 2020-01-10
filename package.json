@@ -1,0 +1,9 @@
+{
+  "name": "techbook-gh-actions-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lollipop-onl/techbook-gh-actions-demo.git",
+  "author": "lollipop-onl <lollipop@simoochee.net>",
+  "license": "MIT",
+  "private": false
+}
