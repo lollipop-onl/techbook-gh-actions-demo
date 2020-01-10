@@ -7,6 +7,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "develop": "nuxt-ts",
+    "build": "nuxt-ts build",
     "lintjs": "eslint --ext .ts,.js,.vue .",
     "lintjs:fix": "yarn lintjs --fix",
     "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
