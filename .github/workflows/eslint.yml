@@ -22,7 +22,7 @@ jobs:
       - name: 自動修正が行われたかを取得
         id: diff
         run: |
-          echo "::set-output name=fixed::if (git diff --shortstat | grep '[0-9]'); then echo yes; fi;"
+          if (git diff --shortstat | grep '[0-9]'); then echo "::set-output name=fixed::yes"; fi"
       - run: echo $LOG
         env:
           LOG: ${{ steps.diff.outputs.fixed }}
