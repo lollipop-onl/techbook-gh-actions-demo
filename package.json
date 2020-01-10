@@ -5,5 +5,30 @@
   "repository": "https://github.com/lollipop-onl/techbook-gh-actions-demo.git",
   "author": "lollipop-onl <lollipop@simoochee.net>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "lintjs": "eslint --ext .ts,.js,.vue .",
+    "lintjs:fix": "yarn lintjs --fix",
+    "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
+    "lintcss:fix": "yarn lintcss --fix"
+  },
+  "dependencies": {
+    "@nuxt/typescript-build": "^0.5.5",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "nuxt": "^2.11.0",
+    "nuxt-property-decorator": "^2.5.0",
+    "reset.css": "^2.0.2"
+  },
+  "devDependencies": {
+    "@nuxt/typescript-runtime": "^0.3.6",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "eslint": "^6.8.0",
+    "node-sass": "^4.13.0",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^8.0.0",
+    "stylelint": "^12.0.1",
+    "stylelint-config-recess-order": "^2.0.3",
+    "stylelint-config-standard": "^19.0.0"
+  }
 }
