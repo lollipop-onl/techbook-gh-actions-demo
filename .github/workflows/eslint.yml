@@ -23,15 +23,16 @@ jobs:
         id: diff
         run: |
           echo "::set-output name=fixed::$(if (git diff --shortstat | grep '[0-9]'); then echo yes; fi)"
+      - run: echo $LOG
+        env:
+          LOG: ${{ steps.diff.outputs.fixed }}
       - if: steps.diff.outputs.fixed == 'yes'
         run: |
           git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          if (git diff --shortstat | grep '[0-9]'); then \
-            git add .; \
-            git commit -m "👕 Fixed auto-fixable ESLint errors by github-actions"; \
-            git push origin HEAD:${GITHUB_REF}; \
-          fi
+          git add .;
+          git commit -m "👕 Fixed auto-fixable ESLint errors by github-actions";
+          git push origin HEAD:${GITHUB_REF};
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
