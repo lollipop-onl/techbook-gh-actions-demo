@@ -1,0 +1,33 @@
+name: Pull Requestプレビュー
+on: push
+
+jobs:
+  deploy:
+    name: プレビューデプロイ
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Yarnキャッシュディレクトリパス取得
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn install
+      - run: yarn build
+      - uses: actions/setup-python@v1
+      - name: AWS CLIをインストール
+        run: |
+          python -m pip install --upgrade pip
+          pip install awscli
+      - name: S3へデプロイ
+        run: |
+          aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET --acl public-read
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: ./dist
