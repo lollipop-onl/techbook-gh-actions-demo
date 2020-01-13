@@ -3,7 +3,7 @@ on: push
 
 jobs:
   deploy:
-    name: プレビューデプロイ
+    name: デプロイ
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
