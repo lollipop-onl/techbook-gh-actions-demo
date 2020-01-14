@@ -32,3 +32,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: ./dist
           AWS_S3_BUCKET: gh-actions-pr-preview
+
