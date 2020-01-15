@@ -27,7 +27,7 @@ jobs:
       - run: echo $GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//'
       - name: Pull Request番号を取得
         id: pull-number
-        run: echo "::set-output name=number::$($GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
+        run: echo "::set-output name=number::$(echo $GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
       - name: S3へデプロイ
         run: |
           aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/$PULL_NUMBER --acl public-read
