@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - run: echo $GITHUB_REF
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
