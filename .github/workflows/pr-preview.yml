@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - run: echo $GITHUB_REF
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
@@ -24,11 +25,15 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install awscli
+      - name: Pull Request番号を取得
+        id: pull-number
+        run: echo "::set-output name=number::$($GITHUB_REF | sed -e 's/refs\/pull\///' -e 's/\/merge//')"
       - name: S3へデプロイ
         run: |
-          aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/1 --acl public-read
+          aws s3 sync $SOURCE_DIR s3://$AWS_S3_BUCKET/$PULL_NUMBER --acl public-read
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           SOURCE_DIR: ./dist
           AWS_S3_BUCKET: gh-actions-pr-preview
+          PULL_NUMBER: ${{ steps.pull-number.outputs.number }}
