@@ -1,21 +1,14 @@
 <template lang="pug">
-  .v-input-field
-    label.label(for="name") あなたの名前は？
-    .field
-      input.input#name(
-        v-bind="$attrs"
-        v-on="listeners"
-        :value="inputValue"
-      )
-    p.error(v-if="errorMessage") {{ errorMessage }}
-    p.count(
-      v-if="maxLength > 0"
-      :class="{ '-caution': isOverMaxLength }"
-    ) {{ inputLength }} / {{ maxLength }}
+  .v-input-field(
+    v-on="listeners"
+    ref="field"
+    :placeholder="placeholder"
+    contenteditable="true"
+  )
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Model, Vue } from 'nuxt-property-decorator'
+import { Component, Emit, Prop, Ref, Model, Watch, Vue } from 'nuxt-property-decorator'
 
 @Component({
   inheritAttrs: false
@@ -25,9 +18,13 @@ export default class VInputField extends Vue {
   @Model('input', { type: String, required: true })
   inputValue!: string
 
-  /** 最大入力文字数 */
-  @Prop({ type: Number, default: 0 })
-  maxLength!: number
+  /** Placeholder */
+  @Prop({ type: String })
+  placeholder?: string
+
+  /** FieldRef */
+  @Ref('field')
+  fieldElement?: HTMLDivElement
 
   /** v-modelのイベントリスナを仕込んだ $listeners */
   get listeners (): Record<string, Function | Function[]> {
@@ -36,41 +33,52 @@ export default class VInputField extends Vue {
       input: (event: Event): void => {
         const { target } = event
 
-        if (!(target instanceof HTMLInputElement)) {
+        if (!(target instanceof HTMLDivElement)) {
           return
         }
 
-        const { value } = target
+        const { textContent } = target
 
-        this.input(value)
+        this.input(textContent || '')
       }
     }
   }
 
-  /** 入力値の文字数 */
-  get inputLength (): number {
-    return this.inputValue.length
-  }
-
-  /** 入力文字数が最大文字数を超過していないか */
-  get isOverMaxLength (): boolean {
-    return this.inputLength > this.maxLength
-  }
-
-  /** エラーメッセージ */
-  get errorMessage (): string | void {
-    if (this.isOverMaxLength) {
-      return `${this.maxLength}文字以内で入力してください`
+  /** inputValueと実際のデータがずれたら修正する */
+  @Watch('inputValue')
+  onInputValueChanged (inputValue: string): void {
+    if (!this.fieldElement) {
+      return
     }
+
+    const { textContent } = this.fieldElement
+
+    if (textContent === inputValue) {
+      return
+    }
+
+    this.fieldElement.textContent = inputValue
+  }
+
+  /** Lifecycle hook */
+  mounted (): void {
+    if (!this.fieldElement) {
+      return
+    }
+
+    this.fieldElement.textContent = this.inputValue
   }
 
   /** 入力値の変更をEmitする */
   @Emit()
   input (inputValue: string): string {
+    console.log('emit')
+
     return inputValue
   }
 }
 </script>
 
 <style lang="scss" scoped>
+
 </style>

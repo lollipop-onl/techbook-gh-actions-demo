@@ -6,8 +6,9 @@
         v-model="name"
         placeholder="Taro"
         :maxLength="$C.MAX_NAME_LENGTH"
+        @input="onNameChanged"
       )
-      pre {{defaultName}}
+      pre {{name}}
       button(
         type="submit"
         :disabled="isNameInvalid"
@@ -26,7 +27,7 @@ import VInputField from '@/components/VInputField.vue'
 })
 export default class IndexPage extends Vue {
   /** 名前の入力値 */
-  name = ''
+  name = '1234abcd'
 
   /** 名前の初期値 */
   get defaultName (): string {
@@ -56,7 +57,7 @@ export default class IndexPage extends Vue {
 
   /** Lifecycle hook */
   beforeMount (): void {
-    this.name = this.defaultName
+    this.name = this.name || this.defaultName
   }
 
   /**
