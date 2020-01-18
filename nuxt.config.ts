@@ -1,5 +1,9 @@
 import { Configuration } from '@nuxt/types'
 
+const {
+  BASE_PATH = '/'
+} = process.env
+
 const config: Configuration = {
   // ビルドモード
   mode: 'spa',
@@ -18,7 +22,7 @@ const config: Configuration = {
   // vue-router
   router: {
     mode: 'hash',
-    base: './'
+    base: BASE_PATH
   },
   // ビルド時のみ使用するモジュール
   buildModules: [

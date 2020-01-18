@@ -5,6 +5,7 @@
       v-input-field(
         v-model="name"
         placeholder="Taro"
+        :maxLength="100"
       )
       p(v-if="isNameEmpty") 名前を入力してください
       p(v-else-if="isNameInvalid") 名前の入力値が不正です
