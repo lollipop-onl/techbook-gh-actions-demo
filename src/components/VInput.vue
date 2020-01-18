@@ -1,5 +1,5 @@
 <template lang="pug">
-  .v-input-field(
+  .v-input(
     v-on="listeners"
     ref="field"
     :placeholder="placeholder"
@@ -13,7 +13,7 @@ import { Component, Emit, Prop, Ref, Model, Watch, Vue } from 'nuxt-property-dec
 @Component({
   inheritAttrs: false
 })
-export default class VInputField extends Vue {
+export default class VInput extends Vue {
   /** v-model定義 */
   @Model('input', { type: String, required: true })
   inputValue!: string
@@ -80,5 +80,16 @@ export default class VInputField extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  .v-input {
+    & {
+      display: inline-block;
+      width: auto;
+    }
 
+    &:empty::before {
+      content: attr(placeholder);
+      opacity: 0.5;
+      font-size: 1em;
+    }
+  }
 </style>

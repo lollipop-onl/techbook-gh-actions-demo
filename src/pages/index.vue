@@ -2,11 +2,10 @@
   div
     h1 Hello you
     form(@submit.prevent="onSubmit")
-      v-input-field(
+      v-input(
         v-model="name"
         placeholder="Taro"
         :maxLength="$C.MAX_NAME_LENGTH"
-        @input="onNameChanged"
       )
       pre {{name}}
       button(
@@ -18,16 +17,16 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
 import { castArray } from 'lodash-es'
-import VInputField from '@/components/VInputField.vue'
+import VInput from '@/components/VInput.vue'
 
 @Component({
   components: {
-    VInputField
+    VInput
   }
 })
 export default class IndexPage extends Vue {
   /** 名前の入力値 */
-  name = '1234abcd'
+  name = ''
 
   /** 名前の初期値 */
   get defaultName (): string {
