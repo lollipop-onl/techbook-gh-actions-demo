@@ -7,6 +7,12 @@ const {
 const config: Configuration = {
   // ビルドモード
   mode: 'spa',
+  // ビルド設定
+  build: {
+    transpile: [
+      'lodash-es'
+    ]
+  },
   // ソースディレクトリパス
   srcDir: 'src',
   // headタグ内の項目
@@ -31,6 +37,10 @@ const config: Configuration = {
   // Nuxt Module
   modules: [
     '@nuxtjs/style-resources'
+  ],
+  // Nuxt Plugins
+  plugins: [
+    '@/plugins/constants'
   ],
   // 全体で使用するCSSファイルを指定
   styleResources: {
