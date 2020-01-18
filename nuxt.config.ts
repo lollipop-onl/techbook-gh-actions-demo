@@ -17,7 +17,8 @@ const config: Configuration = {
   css: [],
   // vue-router
   router: {
-    mode: 'hash'
+    mode: 'hash',
+    base: './'
   },
   // ビルド時のみ使用するモジュール
   buildModules: [
