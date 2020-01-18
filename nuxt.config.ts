@@ -24,7 +24,10 @@ const config: Configuration = {
     ]
   },
   // グローバルCSSファイル
-  css: [],
+  css: [
+    'reset-css',
+    '@/assets/styles/main.scss'
+  ],
   // vue-router
   router: {
     mode: 'hash',
@@ -44,7 +47,10 @@ const config: Configuration = {
   ],
   // 全体で使用するCSSファイルを指定
   styleResources: {
-    scss: []
+    scss: [
+      '@/assets/styles/vars.scss',
+      '@/assets/styles/media.scss'
+    ]
   }
 }
 
