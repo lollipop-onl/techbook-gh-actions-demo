@@ -5,10 +5,9 @@
       v-input-field(
         v-model="name"
         placeholder="Taro"
-        :maxLength="100"
+        :maxLength="$C.MAX_NAME_LENGTH"
       )
-      p(v-if="isNameEmpty") 名前を入力してください
-      p(v-else-if="isNameInvalid") 名前の入力値が不正です
+      pre {{defaultName}}
       button(
         type="submit"
         :disabled="isNameInvalid"
@@ -17,6 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import { castArray } from 'lodash-es'
 import VInputField from '@/components/VInputField.vue'
 
 @Component({
@@ -28,6 +28,17 @@ export default class IndexPage extends Vue {
   /** 名前の入力値 */
   name = ''
 
+  /** 名前の初期値 */
+  get defaultName (): string {
+    const name = castArray(this.$route.query.name)[0]
+
+    if (name == null) {
+      return ''
+    }
+
+    return name
+  }
+
   /** 名前が空文字かどうか */
   get isNameEmpty (): boolean {
     return this.name === ''
@@ -35,12 +46,17 @@ export default class IndexPage extends Vue {
 
   /** 名前の入力値が不正かどうか */
   get isNameInvalid (): boolean {
-    return this.isNameEmpty || this.name.length > 100
+    return this.isNameEmpty || this.name.length > this.$C.MAX_NAME_LENGTH
   }
 
   /** URLエンコードされた名前 */
   get encodedName (): string {
     return encodeURIComponent(this.name)
+  }
+
+  /** Lifecycle hook */
+  beforeMount (): void {
+    this.name = this.defaultName
   }
 
   /**
