@@ -1,17 +1,18 @@
 <template lang="pug">
-  div
-    h1 Hello you
-    form(@submit.prevent="onSubmit")
-      v-input(
-        v-model="name"
-        placeholder="Taro"
-        :maxLength="$C.MAX_NAME_LENGTH"
-      )
-      pre {{name}}
-      button(
-        type="submit"
-        :disabled="isNameInvalid"
-      ) 決定
+  .page
+    .page__title Hello you
+    .page__content
+      form(@submit.prevent="onSubmit")
+        .form
+          v-input.form__input(
+            v-model="name"
+            placeholder="Taro"
+            :maxLength="$C.MAX_NAME_LENGTH"
+          )
+          button.form__submit(
+            type="submit"
+            :disabled="isNameInvalid"
+          ) 決定
 </template>
 
 <script lang="ts">
@@ -78,4 +79,17 @@ export default class IndexPage extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  .page {
+    @extend %page-container;
+  }
+
+  .form {
+    &__input {
+      font-size: 12px;
+    }
+
+    &__submit {
+      margin-top: 12px;
+    }
+  }
 </style>

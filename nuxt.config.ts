@@ -21,6 +21,9 @@ const config: Configuration = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ],
+    link: [
+      { rel: 'stylesheet', href: 'https://lollipop-onl.github.io/webfonts/Togalite.css' }
     ]
   },
   // グローバルCSSファイル
@@ -49,7 +52,8 @@ const config: Configuration = {
   styleResources: {
     scss: [
       '@/assets/styles/vars.scss',
-      '@/assets/styles/media.scss'
+      '@/assets/styles/media.scss',
+      '@/assets/styles/abstract.scss'
     ]
   }
 }

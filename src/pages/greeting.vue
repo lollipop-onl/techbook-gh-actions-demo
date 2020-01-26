@@ -1,8 +1,10 @@
 <template lang="pug">
-  div
-    h1 Hello
-    p Hello, {{ name }} !
-    n-link(to="/") go back
+  .page
+    h1.page__title hello
+    .page__content
+      .greeting
+        .greeting__name こんにちは、{{ name }}さん！
+        n-link.greeting__link(to="/") 名前を変更する
 </template>
 
 <script lang="ts">
@@ -33,4 +35,7 @@ export default class IndexPage extends Vue {
 </script>
 
 <style lang="scss" scoped>
+  .page {
+    @extend %page-container;
+  }
 </style>
