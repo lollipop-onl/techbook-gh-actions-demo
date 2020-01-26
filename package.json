@@ -12,7 +12,9 @@
     "lintjs": "eslint --ext .ts,.js,.vue .",
     "lintjs:fix": "yarn lintjs --fix",
     "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
-    "lintcss:fix": "yarn lintcss --fix"
+    "lintcss:fix": "yarn lintcss --fix",
+    "e2e": "testcafe chrome e2e --app \"http-server dist\"",
+    "e2e:headless": "testcafe chrome:headless e2e --app \"http-server dist\""
   },
   "dependencies": {
     "@nuxt/typescript-build": "^0.5.5",
@@ -27,6 +29,8 @@
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@types/lodash-es": "^4.17.3",
     "eslint": "^6.8.0",
+    "eslint-plugin-testcafe": "^0.2.1",
+    "http-server": "^0.12.1",
     "node-sass": "^4.13.0",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",

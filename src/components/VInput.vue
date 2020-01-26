@@ -1,14 +1,14 @@
 <template lang="pug">
-  .v-input(
+  input(
+    v-bind="$attrs"
     v-on="listeners"
+    :value="inputValue"
     ref="field"
-    :placeholder="placeholder"
-    contenteditable="true"
   )
 </template>
 
 <script lang="ts">
-import { Component, Emit, Prop, Ref, Model, Watch, Vue } from 'nuxt-property-decorator'
+import { Component, Emit, Model, Vue } from 'nuxt-property-decorator'
 
 @Component({
   inheritAttrs: false
@@ -18,14 +18,6 @@ export default class VInput extends Vue {
   @Model('input', { type: String, required: true })
   inputValue!: string
 
-  /** Placeholder */
-  @Prop({ type: String })
-  placeholder?: string
-
-  /** FieldRef */
-  @Ref('field')
-  fieldElement?: HTMLDivElement
-
   /** v-modelのイベントリスナを仕込んだ $listeners */
   get listeners (): Record<string, Function | Function[]> {
     return {
@@ -33,47 +25,20 @@ export default class VInput extends Vue {
       input: (event: Event): void => {
         const { target } = event
 
-        if (!(target instanceof HTMLDivElement)) {
+        if (!(target instanceof HTMLInputElement)) {
           return
         }
 
-        const { textContent } = target
+        const { value } = target
 
-        this.input(textContent || '')
+        this.input(value)
       }
     }
-  }
-
-  /** inputValueと実際のデータがずれたら修正する */
-  @Watch('inputValue')
-  onInputValueChanged (inputValue: string): void {
-    if (!this.fieldElement) {
-      return
-    }
-
-    const { textContent } = this.fieldElement
-
-    if (textContent === inputValue) {
-      return
-    }
-
-    this.fieldElement.textContent = inputValue
-  }
-
-  /** Lifecycle hook */
-  mounted (): void {
-    if (!this.fieldElement) {
-      return
-    }
-
-    this.fieldElement.textContent = this.inputValue
   }
 
   /** 入力値の変更をEmitする */
   @Emit()
   input (inputValue: string): string {
-    console.log('emit')
-
     return inputValue
   }
 }
