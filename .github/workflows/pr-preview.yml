@@ -1,7 +1,5 @@
 name: Pull Requestプレビュー
-on:
-  pull_request:
-    type: [opened]
+on: pull_request
 
 jobs:
   deploy:
@@ -38,12 +36,8 @@ jobs:
           SOURCE_DIR: ./dist
           AWS_S3_BUCKET: gh-actions-pr-preview
           PULL_NUMBER: ${{ steps.pull-number.outputs.number }}
-  log:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ github.event.pull_request.action }}
   comment:
-    if: github.event.pull_request.action == 'action'
+    if: github.event.action == 'opened'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@0.2.0
