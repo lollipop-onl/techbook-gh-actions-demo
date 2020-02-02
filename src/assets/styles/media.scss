@@ -1,0 +1,4 @@
+// SPサイズのMediaQuery
+$sp: unquote('max-width: #{$breakpoint - 1px}');
+// PCサイズのMediaQuery
+$pc: unquote('max-width: #{$breakpoint}');

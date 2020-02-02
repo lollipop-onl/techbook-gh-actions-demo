@@ -12,26 +12,32 @@
     "lintjs": "eslint --ext .ts,.js,.vue .",
     "lintjs:fix": "yarn lintjs --fix",
     "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
-    "lintcss:fix": "yarn lintcss --fix"
+    "lintcss:fix": "yarn lintcss --fix",
+    "e2e": "testcafe chrome e2e --app \"http-server dist\"",
+    "e2e:headless": "testcafe chrome:headless e2e --app \"http-server dist\""
   },
   "dependencies": {
     "@nuxt/typescript-build": "^0.5.5",
     "@nuxtjs/style-resources": "^1.0.0",
-    "noop": "^0.2.2",
+    "lodash-es": "^4.17.15",
     "nuxt": "^2.11.0",
     "nuxt-property-decorator": "^2.5.0",
-    "reset.css": "^2.0.2"
+    "reset-css": "^5.0.1"
   },
   "devDependencies": {
     "@nuxt/typescript-runtime": "^0.3.6",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "@types/lodash-es": "^4.17.3",
     "eslint": "^6.8.0",
+    "eslint-plugin-testcafe": "^0.2.1",
+    "http-server": "^0.12.1",
     "node-sass": "^4.13.0",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^8.0.0",
     "stylelint": "^12.0.1",
     "stylelint-config-recess-order": "^2.0.3",
-    "stylelint-config-standard": "^19.0.0"
+    "stylelint-config-standard": "^19.0.0",
+    "testcafe": "^1.8.0"
   }
 }
