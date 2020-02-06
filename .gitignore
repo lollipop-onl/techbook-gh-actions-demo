@@ -1,5 +1,8 @@
 ### https://raw.github.com/github/gitignore/cb0c6ef7ac68f2300409ee85501d9ad432cb4c7e/Node.gitignore
 
+# TestCafe
+screenshots
+
 # Logs
 logs
 *.log
