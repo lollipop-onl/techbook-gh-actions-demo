@@ -1,5 +1,5 @@
 // プライマリーカラー
-$_primary: #8effeb;
+$_primary: #e01c84;
 // セカンダリカラー
 $_secondary: #9a6bb5;
 // 警告カラー
@@ -7,5 +7,31 @@ $_caution: #9A6BB5;
 // テキストカラー
 $_text: #252521;
 
+// フォントサイズ
+// 最小
+$font-sm: 1.2rem;
+// 通常
+$font-md: 1.4rem;
+// 大きい
+$font-lg: 2.0rem;
+// 見出し（PC）
+$font-heading-pc: 6.4rem;
+// 見出し（SP）
+$font-heading-sp: 3.2rem;
+
 // PC/SPのブレイクポイント
 $breakpoint: 720px;
+
+// レイアウト
+// ページコンテナ（PC）
+$page-container-width: 600px;
+
+// 余白
+// 小さい
+$margin-sm: 12px;
+// 中くらい
+$margin-md: 20px;
+// 大きい
+$margin-lg: 32px;
+// 特大
+$margin-xlg: 48px;

@@ -1,15 +1,26 @@
 %page-container {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 20px;
-  margin: 0 auto;
-
-  &__title {
-    font-size: 24px;
+  & {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: $page-container-width;
+    padding: 0 $margin-md;
+    margin: 0 auto;
   }
 
-  &__content {
-    margin-top: 32px;
+  & > .title {
+    font-size: $font-heading-pc;
+
+    @media ($sp) {
+      font-size: $font-heading-sp;
+    }
+  }
+
+  & > .content {
+    padding: 0 $margin-xlg;
+    margin-top: $margin-lg;
+
+    @media ($sp) {
+      padding: 0;
+    }
   }
 }

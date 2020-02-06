@@ -1,10 +1,11 @@
 <template lang="pug">
-  input(
-    v-bind="$attrs"
-    v-on="listeners"
-    :value="inputValue"
-    ref="field"
-  )
+  .v-input
+    input.field(
+      v-bind="$attrs"
+      v-on="listeners"
+      :value="inputValue"
+      ref="field"
+    )
 </template>
 
 <script lang="ts">
@@ -46,15 +47,12 @@ export default class VInput extends Vue {
 
 <style lang="scss" scoped>
   .v-input {
-    & {
-      display: inline-block;
-      width: auto;
-    }
-
-    &:empty::before {
-      content: attr(placeholder);
-      opacity: 0.5;
-      font-size: 1em;
+    & > .field {
+      width: 100%;
+      height: 100%;
+      font-size: $font-lg;
+      border: none;
+      background: none;
     }
   }
 </style>

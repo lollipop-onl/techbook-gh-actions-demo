@@ -1,15 +1,16 @@
 <template lang="pug">
-  .page
-    .page__title Hello you
-    .page__content
+  .page-container
+    .title Welcome!
+    .content
       form(@submit.prevent="onSubmit")
-        .form
-          v-input.form__input(
+        .form-field
+          label.label(for="name") 名前を入力してください
+          v-input.input#name(
             v-model="name"
             placeholder="Taro"
             :maxLength="$C.MAX_NAME_LENGTH"
           )
-          button.form__submit(
+          button.submit(
             type="submit"
             :disabled="isNameInvalid"
           ) 決定
@@ -79,17 +80,22 @@ export default class IndexPage extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  .page {
+  .page-container {
     @extend %page-container;
   }
 
-  .form {
-    &__input {
-      font-size: 12px;
+  .form-field {
+    & > .label {
+      display: block;
+      font-size: $font-md;
     }
 
-    &__submit {
-      margin-top: 12px;
+    & > .input {
+      margin-top: $margin-sm;
+    }
+
+    & > .submit {
+      margin-top: $margin-md;
     }
   }
 </style>
