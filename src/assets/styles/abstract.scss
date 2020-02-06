@@ -24,3 +24,10 @@
     }
   }
 }
+
+%base-button {
+  & {
+    padding: 0.8em 1.5em;
+    font-size: $font-md;
+  }
+}
