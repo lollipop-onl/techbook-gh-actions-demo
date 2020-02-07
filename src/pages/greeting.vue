@@ -69,8 +69,8 @@ export default class IndexPage extends Vue {
   }
 
   & > .greeting > .name {
-    font-size: $font-lg;
     margin-right: 0.3em;
+    font-size: $font-lg;
   }
 
   & > .message {
@@ -78,7 +78,7 @@ export default class IndexPage extends Vue {
   }
 
   & > .message:first-child {
-    color: #0000ff;
+    color: #00f;
   }
 }
 </style>
