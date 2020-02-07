@@ -9,6 +9,8 @@
   }
 
   & > .content {
+    width: 640px;
+    max-width: calc(100% - #{$margin-sm * 2});
     padding: 0 $margin-sm;
     margin: $margin-xlg auto 0;
   }

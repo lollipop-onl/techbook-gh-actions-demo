@@ -10,15 +10,18 @@
               | こんにちは、
               b.name {{ name }}
               | さん！
-            p.message 本書をご購入いただきありがとうございます。
-            p.message GitHub Actionsをお楽しみください！
+            p.message
+              span.merker(:class="{ '-marked': isMessageMarked }")
+                | 本書をご購入いただきありがとうございます。
+                | GitHub Actionsをお楽しみください！
         template(v-slot:footer)
           n-link.footer-button(to="/") 名前を変更する
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import { Component, NextTick, Vue } from 'nuxt-property-decorator';
 import VCard from '@/components/VCard.vue';
+import { sleep } from '@/utils';
 
 @Component({
   components: {
@@ -26,6 +29,9 @@ import VCard from '@/components/VCard.vue';
   },
 })
 export default class IndexPage extends Vue {
+  /** マーカーを動作させるフラグ */
+  isMessageMarked = false;
+
   /** 名前 */
   get name(): string | void {
     const { name } = this.$route.query;
@@ -44,6 +50,13 @@ export default class IndexPage extends Vue {
     if (!this.name) {
       this.$router.replace('/');
     }
+  }
+
+  /** ライフサイクル */
+  async mounted(): Promise<void> {
+    await sleep(2000);
+
+    this.isMessageMarked = true;
   }
 }
 </script>
@@ -77,8 +90,11 @@ export default class IndexPage extends Vue {
     line-height: 1.8;
   }
 
-  & > .message:first-child {
-    color: #00f;
+  & > .message > .merker {
+    @include marker-text;
+
+    line-height: 1.8;
+    white-space: pre-wrap;
   }
 }
 </style>
