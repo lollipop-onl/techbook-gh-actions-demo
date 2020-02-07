@@ -1,22 +1,23 @@
 <template lang="pug">
   .page-container
-    form(@submit.prevent="onSubmit")
-      VCard
-        template(v-slot:header)
-          | Welcome !
-        template(v-slot)
-          .form-field
-            label.label(for="46Juzcyx") 名前を入力してください
-            v-input.input#46Juzcyx(
-              v-model="name"
-              placeholder="Taro"
-              :maxLength="$C.MAX_NAME_LENGTH"
-            )
-        template(v-slot:footer)
-          button.submit-button(
-            type="submit"
-            :disabled="isNameInvalid"
-          ) 次へすすむ
+    .content
+      form(@submit.prevent="onSubmit")
+        VCard
+          template(v-slot:header)
+            | Welcome !
+          template(v-slot)
+            .form-field
+              label.label(for="46Juzcyx") 名前を入力してください
+              v-input.input#46Juzcyx(
+                v-model="name"
+                placeholder="Taro"
+                :maxLength="$C.MAX_NAME_LENGTH"
+              )
+          template(v-slot:footer)
+            button.submit-button(
+              type="submit"
+              :disabled="isNameInvalid"
+            ) 次へすすむ
 </template>
 
 <script lang="ts">

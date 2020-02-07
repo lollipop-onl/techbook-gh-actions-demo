@@ -2,21 +2,14 @@
   & {
     box-sizing: border-box;
     width: 100%;
-    max-width: $page-container-width;
-    padding: 0 $margin-md;
-    margin: 0 auto;
   }
 
-  & > .title {
-    font-size: $font-heading;
+  & {
+    height: 50vh;
   }
 
   & > .content {
-    padding: 0 $margin-xlg;
-    margin-top: $margin-lg;
-
-    @media ($sp) {
-      padding: 0;
-    }
+    padding: 0 $margin-sm;
+    margin: $margin-xlg auto 0;
   }
 }

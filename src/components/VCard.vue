@@ -18,13 +18,21 @@ export default class VCard extends Vue {}
 <style lang="scss" scoped>
 .v-card {
   & {
+    @include card-shadow;
+
     padding-top: $margin-lg;
     background: $_white;
+    border-radius: 4px;
   }
 
   & > .header {
     padding: 0 $margin-lg;
     font-size: $font-heading;
+    line-height: 1.5;
+
+    @media ($sp) {
+      padding: 0 $margin-lg;
+    }
   }
 
   & > .content {
@@ -32,7 +40,8 @@ export default class VCard extends Vue {}
     margin-top: $margin-lg;
 
     @media ($sp) {
-      padding: 0;
+      padding: 0 $margin-lg;
+      margin-top: $margin-xlg;
     }
   }
 
@@ -45,7 +54,8 @@ export default class VCard extends Vue {}
     border-top: 1px solid $_border;
 
     @media ($sp) {
-      padding: 0;
+      padding: $margin-sm $margin-md;
+      margin-top: $margin-xlg;
     }
   }
 }

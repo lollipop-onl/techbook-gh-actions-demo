@@ -1,13 +1,19 @@
 <template lang="pug">
   .page-container
-    VCard
-      template(v-slot:header)
-        | Thank you for purchasing!
-      template(v-slot)
-        p こんにちは、{{ name }}さん！
-        p 本書をご購入いただきありがとうございます！
-      template(v-slot:footer)
-        n-link.footer-button(to="/") 名前を変更する
+    .content
+      VCard
+        template(v-slot:header)
+          | Thank you for purchasing!
+        template(v-slot)
+          .greeting-body
+            p.greeting
+              | こんにちは、
+              b.name {{ name }}
+              | さん！
+            p.message 本書をご購入いただきありがとうございます。
+            p.message GitHub Actionsをお楽しみください！
+        template(v-slot:footer)
+          n-link.footer-button(to="/") 名前を変更する
 </template>
 
 <script lang="ts">
@@ -50,5 +56,29 @@ export default class IndexPage extends Vue {
 .footer-button {
   @extend %base-button;
   @extend %base-button.-outline;
+}
+
+.greeting-body {
+  & {
+    font-size: $font-md;
+  }
+
+  & > .greeting {
+    margin-bottom: $margin-md;
+    line-height: 1.5;
+  }
+
+  & > .greeting > .name {
+    font-size: $font-lg;
+    margin-right: 0.3em;
+  }
+
+  & > .message {
+    line-height: 1.8;
+  }
+
+  & > .message:first-child {
+    color: #0000ff;
+  }
 }
 </style>

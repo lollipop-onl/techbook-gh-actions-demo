@@ -7,7 +7,7 @@ $_caution: #9a6bb5;
 // 非活性カラー
 $_inactive: #ccc;
 // 白
-$_white: #eee;
+$_white: #fafafa;
 // テキストカラー
 $_text: #252521;
 // ボーダーカラー
@@ -28,6 +28,9 @@ $font-heading: 3.2rem;
 $font-normal: 400;
 // 太い
 $font-bold: 600;
+
+// フォントファミリー
+$font-family: sans-serif;
 
 // PC/SPのブレイクポイント
 $breakpoint: 720px;
