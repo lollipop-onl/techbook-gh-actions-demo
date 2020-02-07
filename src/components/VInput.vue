@@ -50,10 +50,10 @@ export default class VInput extends Vue {
 .v-input {
   & > .field {
     width: 100%;
-    line-height: 1.8;
     font-size: $font-lg;
-    border: none;
+    line-height: 1.8;
     background: none;
+    border: none;
     outline: none;
   }
 
@@ -65,21 +65,21 @@ export default class VInput extends Vue {
   }
 
   & > .border::before {
-    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 2px;
     width: 100%;
+    height: 2px;
+    content: '';
     background: $_primary;
+    transition: transform 0.24s ease;
     transform: scale3d(0, 1, 1);
     transform-origin: right;
-    transition: transform 0.24s ease;
   }
 
   & > .field:focus + .border::before {
-    transform-origin: left;
     transform: scale3d(1, 1, 1);
+    transform-origin: left;
   }
 }
 </style>

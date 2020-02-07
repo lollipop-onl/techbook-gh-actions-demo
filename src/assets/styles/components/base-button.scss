@@ -1,11 +1,11 @@
 %base-button {
   & {
+    display: inline-block;
     padding: 0 1.5em;
     font-size: $font-md;
     line-height: 2.5;
-    cursor: pointer;
     text-decoration: none;
-    display: inline-block;
+    cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 

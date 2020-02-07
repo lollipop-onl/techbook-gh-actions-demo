@@ -16,8 +16,8 @@ import VCard from '@/components/VCard.vue';
 
 @Component({
   components: {
-    VCard
-  }
+    VCard,
+  },
 })
 export default class IndexPage extends Vue {
   /** 名前 */
