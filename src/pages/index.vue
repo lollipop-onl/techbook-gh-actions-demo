@@ -1,29 +1,34 @@
 <template lang="pug">
   .page-container
-    .title Welcome!
-    .content
-      form(@submit.prevent="onSubmit")
-        .form-field
-          label.label(for="name") 名前を入力してください
-          v-input.input#name(
-            v-model="name"
-            placeholder="Taro"
-            :maxLength="$C.MAX_NAME_LENGTH"
-          )
-          button.submit(
+    form(@submit.prevent="onSubmit")
+      VCard
+        template(v-slot:header)
+          | Welcome !
+        template(v-slot)
+          .form-field
+            label.label(for="46Juzcyx") 名前を入力してください
+            v-input.input#46Juzcyx(
+              v-model="name"
+              placeholder="Taro"
+              :maxLength="$C.MAX_NAME_LENGTH"
+            )
+        template(v-slot:footer)
+          button.submit-button(
             type="submit"
             :disabled="isNameInvalid"
-          ) 決定
+          ) 次へすすむ
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { castArray } from 'lodash-es';
 import VInput from '@/components/VInput.vue';
+import VCard from '@/components/VCard.vue';
 
 @Component({
   components: {
     VInput,
+    VCard,
   },
 })
 export default class IndexPage extends Vue {
@@ -93,9 +98,10 @@ export default class IndexPage extends Vue {
   & > .input {
     margin-top: $margin-sm;
   }
+}
 
-  & > .submit {
-    margin-top: $margin-md;
-  }
+.submit-button {
+  @extend %base-button;
+  @extend %base-button.-outline;
 }
 </style>

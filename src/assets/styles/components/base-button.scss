@@ -1,0 +1,37 @@
+%base-button {
+  & {
+    padding: 0 0.8em;
+    font-size: $font-md;
+    line-height: 1.8;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &.-primary {
+    color: $_white;
+    background: $_primary;
+    border: 2px solid $_primary;
+    border-radius: 4px;
+  }
+
+  &.-primary:disabled {
+    background: $_inactive;
+    border-color: $_inactive;
+  }
+
+  &.-outline {
+    color: $_primary;
+    background: transparent;
+    border: 2px solid $_primary;
+    border-radius: 4px;
+  }
+
+  &.-outline:disabled {
+    color: $_inactive;
+    border-color: $_inactive;
+  }
+}

@@ -8,11 +8,7 @@
   }
 
   & > .title {
-    font-size: $font-heading-pc;
-
-    @media ($sp) {
-      font-size: $font-heading-sp;
-    }
+    font-size: $font-heading;
   }
 
   & > .content {
@@ -22,12 +18,5 @@
     @media ($sp) {
       padding: 0;
     }
-  }
-}
-
-%base-button {
-  & {
-    padding: 0.8em 1.5em;
-    font-size: $font-md;
   }
 }

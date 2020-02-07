@@ -6,6 +6,7 @@
       :value="inputValue"
       ref="field"
     )
+    .border
 </template>
 
 <script lang="ts">
@@ -49,10 +50,36 @@ export default class VInput extends Vue {
 .v-input {
   & > .field {
     width: 100%;
-    height: 100%;
+    line-height: 1.8;
     font-size: $font-lg;
     border: none;
     background: none;
+    outline: none;
+  }
+
+  & > .border {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background: $_border;
+  }
+
+  & > .border::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: $_primary;
+    transform: scale3d(0, 1, 1);
+    transform-origin: right;
+    transition: transform 0.24s ease;
+  }
+
+  & > .field:focus + .border::before {
+    transform-origin: left;
+    transform: scale3d(1, 1, 1);
   }
 }
 </style>
