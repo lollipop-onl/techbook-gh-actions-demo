@@ -102,6 +102,6 @@ export default class IndexPage extends Vue {
 
 .submit-button {
   @extend %base-button;
-  @extend %base-button.-outline;
+  @extend %base-button.-primary;
 }
 </style>

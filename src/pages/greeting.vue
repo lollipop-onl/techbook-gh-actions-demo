@@ -1,16 +1,24 @@
 <template lang="pug">
-  .page
-    h1.page__title hello
-    .page__content
-      .greeting
-        .greeting__name こんにちは、{{ name }}さん！
-        n-link.greeting__link(to="/") 名前を変更する
+  .page-container
+    VCard
+      template(v-slot:header)
+        | Thank you for purchasing!
+      template(v-slot)
+        p こんにちは、{{ name }}さん！
+        p 本書をご購入いただきありがとうございます！
+      template(v-slot:footer)
+        n-link.footer-button(to="/") 名前を変更する
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+import VCard from '@/components/VCard.vue';
 
-@Component
+@Component({
+  components: {
+    VCard
+  }
+})
 export default class IndexPage extends Vue {
   /** 名前 */
   get name(): string | void {
@@ -35,7 +43,12 @@ export default class IndexPage extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.page {
+.page-container {
   @extend %page-container;
+}
+
+.footer-button {
+  @extend %base-button;
+  @extend %base-button.-outline;
 }
 </style>
