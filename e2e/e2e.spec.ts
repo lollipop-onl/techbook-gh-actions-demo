@@ -5,7 +5,7 @@ const nameInput = Selector('.form-field input');
 /** 送信ボタンの要素 */
 const submitButton = Selector('.submit-button');
 /** 名前が表示されている要素 */
-const nameElement = Selector('.footer-button');
+const nameElement = Selector('.greeting-body > .greeting > .name');
 /** テストのユーザー名 */
 const testName = '山田太郎';
 /** NuxtのページURLを取得する */
