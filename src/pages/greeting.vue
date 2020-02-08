@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Component, NextTick, Vue } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator';
 import VCard from '@/components/VCard.vue';
 import { sleep } from '@/utils';
 
@@ -54,7 +54,7 @@ export default class IndexPage extends Vue {
 
   /** ライフサイクル */
   async mounted(): Promise<void> {
-    await sleep(2000);
+    await sleep(1000);
 
     this.isMessageMarked = true;
   }
