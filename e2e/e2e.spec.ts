@@ -1,7 +1,7 @@
 import { Selector, ClientFunction } from 'testcafe';
 
 /** 名前入力欄の要素 */
-const nameInput = Selector('.form-field > input');
+const nameInput = Selector('.form-field input');
 /** 送信ボタンの要素 */
 const submitButton = Selector('.submit-button');
 /** 名前が表示されている要素 */
