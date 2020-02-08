@@ -43,7 +43,7 @@ const config: Configuration = {
     scss: [
       '@/assets/styles/vars.scss',
       '@/assets/styles/media.scss',
-      '@/assets/styles/mixinsz1.scss',
+      '@/assets/styles/mixins.scss',
       '@/assets/styles/components/*.scss',
     ],
   },
