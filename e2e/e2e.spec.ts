@@ -1,11 +1,11 @@
 import { Selector, ClientFunction } from 'testcafe';
 
 /** 名前入力欄の要素 */
-const nameInput = Selector('.form > .form__input');
+const nameInput = Selector('#46Juzcyx');
 /** 送信ボタンの要素 */
-const submitButton = Selector('.form > .form__submit');
+const submitButton = Selector('.submit-button');
 /** 名前が表示されている要素 */
-const nameElement = Selector('.greeting > .greeting__name');
+const nameElement = Selector('.footer-button');
 /** テストのユーザー名 */
 const testName = '山田太郎';
 /** NuxtのページURLを取得する */
