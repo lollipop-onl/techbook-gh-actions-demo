@@ -1,6 +1,6 @@
 import { Configuration } from '@nuxt/types';
 
-const { BASE_PATH = '/' } = process.env;
+const { BASE_PATH = './' } = process.env;
 
 const config: Configuration = {
   // ビルドモード
@@ -43,7 +43,7 @@ const config: Configuration = {
     scss: [
       '@/assets/styles/vars.scss',
       '@/assets/styles/media.scss',
-      '@/assets/styles/mixins.scss',
+      '@/assets/styles/mixinsz1.scss',
       '@/assets/styles/components/*.scss',
     ],
   },
