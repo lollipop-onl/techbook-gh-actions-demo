@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Emit, Model, Vue } from 'nuxt-property-decorator';
+import { Component, Emit, Model, Vue } from 'nuxt-property-decorator'
 
 @Component({
-  inheritAttrs: false,
+  inheritAttrs: false
 })
 export default class VInput extends Vue {
   /** v-model定義 */
@@ -21,27 +21,27 @@ export default class VInput extends Vue {
   inputValue!: string;
 
   /** v-modelのイベントリスナを仕込んだ $listeners */
-  get listeners(): Record<string, Function | Function[]> {
+  get listeners (): Record<string, Function | Function[]> {
     return {
       ...this.$listeners,
       input: (event: Event): void => {
-        const { target } = event;
+        const { target } = event
 
         if (!(target instanceof HTMLInputElement)) {
-          return;
+          return
         }
 
-        const { value } = target;
+        const { value } = target
 
-        this.input(value);
-      },
-    };
+        this.input(value)
+      }
+    }
   }
 
   /** 入力値の変更をEmitする */
   @Emit()
-  input(inputValue: string): string {
-    return inputValue;
+  input (inputValue: string): string {
+    return inputValue
   }
 }
 </script>

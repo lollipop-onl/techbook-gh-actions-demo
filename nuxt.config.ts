@@ -1,13 +1,13 @@
-import { Configuration } from '@nuxt/types';
+import { Configuration } from '@nuxt/types'
 
-const { BASE_PATH = './' } = process.env;
+const { BASE_PATH = './' } = process.env
 
 const config: Configuration = {
   // ビルドモード
   mode: 'spa',
   // ビルド設定
   build: {
-    transpile: ['lodash-es'],
+    transpile: ['lodash-es']
   },
   // ソースディレクトリパス
   srcDir: 'src',
@@ -16,21 +16,21 @@ const config: Configuration = {
     title: 'デモプロジェクト',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://lollipop-onl.github.io/webfonts/Togalite.css',
-      },
-    ],
+        href: 'https://lollipop-onl.github.io/webfonts/Togalite.css'
+      }
+    ]
   },
   // グローバルCSSファイル
   css: ['reset-css', '@/assets/styles/main.scss'],
   // vue-router
   router: {
     mode: 'hash',
-    base: BASE_PATH,
+    base: BASE_PATH
   },
   // ビルド時のみ使用するモジュール
   buildModules: ['@nuxt/typescript-build'],
@@ -44,9 +44,9 @@ const config: Configuration = {
       '@/assets/styles/vars.scss',
       '@/assets/styles/media.scss',
       '@/assets/styles/mixins.scss',
-      '@/assets/styles/components/*.scss',
-    ],
-  },
-};
+      '@/assets/styles/components/*.scss'
+    ]
+  }
+}
 
-module.exports = config;
+module.exports = config

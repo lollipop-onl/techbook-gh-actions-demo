@@ -19,44 +19,44 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import VCard from '@/components/VCard.vue';
-import { sleep } from '@/utils';
+import { Component, Vue } from 'nuxt-property-decorator'
+import VCard from '@/components/VCard.vue'
+import { sleep } from '@/utils'
 
 @Component({
   components: {
-    VCard,
-  },
+    VCard
+  }
 })
 export default class IndexPage extends Vue {
   /** マーカーを動作させるフラグ */
   isMessageMarked = false;
 
   /** 名前 */
-  get name(): string | void {
-    const { name } = this.$route.query;
+  get name (): string | void {
+    const { name } = this.$route.query
 
     // クエリの値が文字列以外の場合は void を返す
     if (typeof name !== 'string') {
-      return;
+      return
     }
 
-    return decodeURIComponent(name);
+    return decodeURIComponent(name)
   }
 
   /** ライフサイクル */
-  beforeMount(): void {
+  beforeMount (): void {
     // 名前が空もしくはNullable値の場合はトップへリダイレクト
     if (!this.name) {
-      this.$router.replace('/');
+      this.$router.replace('/')
     }
   }
 
   /** ライフサイクル */
-  async mounted(): Promise<void> {
-    await sleep(1000);
+  async mounted (): Promise<void> {
+    await sleep(1000)
 
-    this.isMessageMarked = true;
+    this.isMessageMarked = true
   }
 }
 </script>
